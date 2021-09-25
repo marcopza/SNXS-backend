@@ -1,4 +1,5 @@
 import subprocess
+from .utils import dsxs
 
 
 def check_sqli(url, cookie):
@@ -14,4 +15,6 @@ def check_nosqli(url, cookie):
 
 
 def check_xss(url, cookie):
-    lol2 = None
+    dsxs.init_options(cookie=cookie)
+    result = dsxs.scan_page(url)
+    return result
