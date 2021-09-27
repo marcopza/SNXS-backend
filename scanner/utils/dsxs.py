@@ -63,21 +63,22 @@ def _contains(content, chars):
 
 
 def scan_page(url, data=None):
+    scan_result = ""
     retval, usable = False, False
     url, data = re.sub(r"=(&|\Z)", "=1\g<1>", url) if url else url, re.sub(r"=(&|\Z)", "=1\g<1>",
                                                                            data) if data else data
     original = re.sub(DOM_FILTER_REGEX, "", _retrieve_content(url, data))
     dom = next(filter(None, (re.search(_, original) for _ in DOM_PATTERNS)), None)
     if dom:
-        print(" (i) page itself appears to be XSS vulnerable (DOM)")
-        print("  (o) ...%s..." % dom.group(0))
+        scan_result += " (i) page itself appears to be XSS vulnerable (DOM)"
+        scan_result += "  (o) ...%s..." % dom.group(0)
         retval = True
     try:
         for phase in (GET, POST):
             current = url if phase is GET else (data or "")
             for match in re.finditer(r"((\A|[?&])(?P<parameter>[\w\[\]]+)=)(?P<value>[^&#]*)", current):
                 found, usable = False, True
-                print("* scanning %s parameter '%s'" % (phase, match.group("parameter")))
+                scan_result += "* scanning %s parameter '%s'" % (phase, match.group("parameter"))
                 prefix, suffix = ("".join(random.sample(string.ascii_lowercase, PREFIX_SUFFIX_LENGTH)) for i in
                                   range(2))
                 for pool in (LARGER_CHAR_POOL, SMALLER_CHAR_POOL):
@@ -95,16 +96,16 @@ def scan_page(url, data=None):
                                 context = re.search(regex % {"chars": re.escape(sample.group(0))}, filtered, re.I)
                                 if context and not found and sample.group(1).strip():
                                     if _contains(sample.group(1), condition):
-                                        print(" (i) %s parameter '%s' appears to be XSS vulnerable (%s)" % (
+                                        scan_result += " (i) %s parameter '%s' appears to be XSS vulnerable (%s)" % (
                                         phase, match.group("parameter"), info % dict((("filtering", "no" if all(
-                                            char in sample.group(1) for char in LARGER_CHAR_POOL) else "some"),))))
+                                            char in sample.group(1) for char in LARGER_CHAR_POOL) else "some"),)))
                                         found = retval = True
                                     break
         if not usable:
-            print(" (x) no usable GET/POST parameters found")
+            scan_result += " (x) no usable GET/POST parameters found"
     except KeyboardInterrupt:
         print("\r (x) Ctrl-C pressed")
-    return retval
+    return scan_result
 
 
 def init_options(proxy=None, cookie=None, ua=None, referer=None):
