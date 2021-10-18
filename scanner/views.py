@@ -27,7 +27,7 @@ class ScannerView(APIView):
             if "1" in test_type:
                 response["SQLi"] = scanner.check_sqli(url, cookie)
             if "2" in test_type:
-                response["NoSQLi"] = None
+                response["NoSQLi"] = scanner.check_nosqli(url)
             if "3" in test_type:
                 response["XSS"] = scanner.check_xss(url, cookie)
             if not response:
