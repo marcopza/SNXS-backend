@@ -26,7 +26,7 @@ Once the file's there, you should rename your file to _nosqli_. If not done, the
 ## Important security reccomendations
 Whether you run this backend in your own PC or at a virtual machine, make sure to:
 - Create an specific user which executes the application, and ensure they do not have superuser privileges. While the application uses shlex and popen to mitigate shell injections, a step further is making it imposible to indirectly ruin your computer.
-- Never pentest against a domain/web application which isn¿t yours without having written permission. Testing and attempting to use EZsec agaisnt a domain without the owner's permission could warrant legal action agaisnt yourself for which we are not responsible for. Use the tool wisely.
+- Never pentest against a domain/web application which isn't yours without having written permission. Testing and attempting to use EZsec agaisnt a domain without the owner's permission could warrant legal action agaisnt yourself for which we are not responsible for. Use the tool wisely.
 
 ## Acknowledgements
 - [Charlie Belmer](https://github.com/Charlie-belmer). Creator of nosqli who was nice enough to guide us through the integration of his tool with our own.
