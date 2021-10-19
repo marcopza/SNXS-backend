@@ -29,6 +29,11 @@ Whether you run this backend in your own PC or at a virtual machine, make sure t
 - Create an specific user which executes the application, and ensure they do not have superuser privileges. While the application uses shlex and popen to mitigate shell injections, a step further is making it imposible to indirectly ruin your computer.
 - Never pentest against a domain/web application which isn't yours without having written permission. Testing and attempting to use EZsec agaisnt a domain without the owner's permission could warrant legal action agaisnt yourself for which we are not responsible for. Use the tool wisely.
 
+## Outputs and vulnerability coverage:
+Our application is in no shape or form a silver bullet for detecting SQL, NoSQL injections and XSS. There are a few points to have in mind:
+- Only MongoDB injections are scanned, NoSQLi reports it does work to a certain degree to JS based databases.
+- False positives and false negatives are always a possibility when using the application; make sure to properly test each of the vulnerabilities to make ensure the existance of one. Remember to always have written consent!
+
 ## Acknowledgements
 - [Charlie Belmer](https://github.com/Charlie-belmer). Creator of nosqli who was nice enough to guide us through the integration of his tool with our own.
 - [Miroslav Stampar](https://github.com/stamparm). Creator of Damn Small XSS Scanner and part of the sqlmap project. Guided us through the usage and integration of sqlmap and DSXS.
