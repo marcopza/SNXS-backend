@@ -4,6 +4,7 @@ _Python application to identify vulnerabilities to SQL, NoSQL injections and XSS
 ## Tools and Libraries
 - [Shlex](https://docs.python.org/3/library/shlex.html)
 - [Subprocess](https://docs.python.org/3/library/subprocess.html)
+- [Django](https://www.djangoproject.com)
 - [nosqli](https://github.com/Charlie-belmer/nosqli)
 - [sqlmap](https://github.com/sqlmapproject/sqlmap)
 - [DSXS(Dam Small XSS Scanner)](https://github.com/stamparm/DSXS)
