@@ -1,19 +1,21 @@
-import subprocess
+import subprocess, shlex
 from .utils import dsxs
 
 
 def check_sqli(url, cookie):
-    return_code = subprocess.run(f'sqlmap -u "{url}" --cookie="{cookie}" --batch --fresh-queries --flush-session',
-                                 shell=True, capture_output=True)
-    response = return_code.stdout.decode("UTF-8")
-    print(response)
-    return response
+    remote_command = shlex.split(f'sqlmap -u "{url}" --cookie="{cookie}" --batch --fresh-queries --flush-session')
+    process = subprocess.Popen(remote_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+    response = stdout.decode('UTF-8').split('sqlmap identified the following injection point(s) with a ')[1]\
+        .split('---')
+    return response[1]
 
 
 def check_nosqli(url):
-    return_code = subprocess.run(f'nosqli scan -t {url} ',
-                                 shell=True, capture_output=True)
-    response = return_code.stdout.decode("UTF-8").split("Found")
+    remote_command = shlex.split(f'nosqli scan -t {url}')
+    process = subprocess.Popen(remote_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = process.communicate()
+    response = stdout.decode("UTF-8").split("Found")
     return response[1:]
 
 

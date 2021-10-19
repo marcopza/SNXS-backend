@@ -4,8 +4,6 @@ from rest_framework import status
 import validators
 from . import scanner
 
-# Create your views here.
-
 
 class ScannerView(APIView):
 
