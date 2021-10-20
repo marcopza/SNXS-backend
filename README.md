@@ -1,5 +1,5 @@
-# EZSec Backend
-_Python application to identify vulnerabilities to SQL, NoSQL injections and XSS._
+# SNXS Backend
+_SQL, NoSQL injection and XXS Scanner._
 
 ## Tools and Libraries
 - [Shlex](https://docs.python.org/3/library/shlex.html)
@@ -27,7 +27,7 @@ Once the file's there, you should rename your file to _nosqli_. If not done, the
 ## Important security reccomendations
 Whether you run this backend in your own PC or at a virtual machine, make sure to:
 - Create an specific user which executes the application, and ensure they do not have superuser privileges. While the application uses shlex and popen to mitigate shell injections, a step further is making it imposible to indirectly ruin your computer.
-- Never pentest against a domain/web application which isn't yours without having written permission. Testing and attempting to use EZsec agaisnt a domain without the owner's permission could warrant legal action agaisnt yourself for which we are not responsible for. Use the tool wisely.
+- Never pentest against a domain/web application which isn't yours without having written permission. Testing and attempting to use SNXS agaisnt a domain without the owner's permission could warrant legal action agaisnt yourself for which we are not responsible for. Use the tool wisely.
 
 ## Outputs and vulnerability coverage:
 Our application is in no shape or form a silver bullet for detecting SQL, NoSQL injections and XSS. There are a few points to have in mind:
