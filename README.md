@@ -31,7 +31,7 @@ Whether you run this backend in your own PC or at a virtual machine, make sure t
 
 ## Outputs and vulnerability coverage:
 Our application is in no shape or form a silver bullet for detecting SQL, NoSQL injections and XSS. There are a few points to have in mind:
-- Only MongoDB injections are scanned, NoSQLi reports it does work to a certain degree to JS based databases.
+- Only MongoDB injections are scanned; NoSQLi reports it does work to a certain degree to JS based databases.
 - False positives and false negatives are always a possibility when using the application; make sure to properly test each of the vulnerabilities to make ensure the existance of one. Remember to always have written consent!
 
 ## Acknowledgements
