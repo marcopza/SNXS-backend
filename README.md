@@ -23,7 +23,19 @@ Then, add the executable to a directory included in your _PATH_. Generally, you 
 echo $PATH
 ````
 Once the file's there, you should rename your file to _nosqli_. If not done, the application won't run.
-
+### Go
+Click [here](https://go.dev/dl/) to learn how to install Go.
+### Python 3
+Click [here](https://www.python.org/downloads/) to learn how to install Python3.
+## How to Run in development mode
+Clone the repository:
+````shell
+git clone https://github.com/marcopza/SNXS-backend.git
+````
+Navigate to the folder and execute the following command:
+````shell
+python3 manage.py runserver
+````
 ## Important security reccomendations
 Whether you run this backend in your own PC or at a virtual machine, make sure to:
 - Create an specific user which executes the application, and ensure they do not have superuser privileges. While the application uses shlex and popen to mitigate shell injections, a step further is making it imposible to indirectly ruin your computer.
