@@ -27,6 +27,8 @@ Once the file's there, you should rename your file to _nosqli_. If not done, the
 Click [here](https://go.dev/dl/) to learn how to install Go.
 ### Python 3
 Click [here](https://www.python.org/downloads/) to learn how to install Python3.
+### Frontend
+Click [here](https://github.com/jmossorio99/SNXS-frontend) to access the React GUI designed for this project.
 ## How to Run in development mode
 Clone the repository:
 ````shell
